@@ -4,7 +4,7 @@
 ## Example
 
 ```javascript
-import normalizeQueryParams from express-normalize-query-params-middleware';
+import normalizeQueryParams from 'express-normalize-query-params-middleware';
 import express from 'express';
 
 const app = express();
