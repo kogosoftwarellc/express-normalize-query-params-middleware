@@ -7,7 +7,8 @@ describe('normalize query params', function() {
   beforeEach(function() {
     req = {
       query: {
-        someparam: 5
+        someparam: 5,
+        alreadyCorrectParam: 42
       }
     };
   });
@@ -15,6 +16,13 @@ describe('normalize query params', function() {
   it('should normalize configured params', function(done) {
     normalizeQueryParams(['someParam'])(req, null, function() {
       expect(req.query.someParam).to.equal(5);
+      done();
+    });
+  });
+
+  it('should not remove configured params that are passed correctly', function(done) {
+    normalizeQueryParams(['alreadyCorrectParam'])(req, null, function() {
+      expect(req.query.alreadyCorrectParam).to.equal(42);
       done();
     });
   });
