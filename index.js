@@ -5,7 +5,7 @@ module.exports = function normalizeQueryParams(params) {
       var index = lowerCased.indexOf(key.toLowerCase());
       if (index > -1) {
         req.query[params[index]] = req.query[key];
-        delete req.query[key];
+        if (key !== params[index]) delete req.query[key];
       }
     });
     next();
